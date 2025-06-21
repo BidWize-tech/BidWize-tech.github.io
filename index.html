@@ -202,7 +202,7 @@
         }
         
         /* Responsive adjustments */
-        @media (max-width: 768px) {
+        @media (max-width: 1100px) {
             .hero h1 {
                 font-size: 42px;
             }
@@ -214,6 +214,15 @@
             .input-group {
                 flex-direction: column;
             }
+
+            .container {
+                flex-direction: column;
+              }
+              
+              #pricing-panel {
+                width: 100%;
+                margin-top: 20px;
+              }
         }
 
         .container {
@@ -1207,21 +1216,20 @@
             toggleAll.className = 'category-toggle active';
             toggleAll.textContent = 'Toggle All';
             toggleAll.onclick = () => {
-                const allActive = activeCategories.size === Object.keys(annotations).length;
-                
-                if (allActive) {
-                    // Hide all
-                    activeCategories.clear();
-                    document.querySelectorAll('.category-toggle').forEach(t => t.classList.remove('active'));
-                } else {
+                const noneActive = activeCategories.size === 0;
+
+                if (noneActive) {
                     // Show all
                     Object.keys(annotations).forEach(cat => activeCategories.add(cat));
                     document.querySelectorAll('.category-toggle').forEach(t => t.classList.add('active'));
+                    document.querySelectorAll('.bbox').forEach(box => box.classList.remove('hidden'));
+                    
+                } else {
+                    // Hide all
+                    activeCategories.clear();
+                    document.querySelectorAll('.category-toggle').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.bbox').forEach(box => box.classList.add('hidden'));
                 }
-                
-                document.querySelectorAll('.bbox').forEach(box => {
-                    box.classList.toggle('hidden', !allActive);
-                });
             };
             controls.appendChild(toggleAll);
         }
