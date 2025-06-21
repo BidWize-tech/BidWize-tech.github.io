@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>BidWize</title>
+    <meta name="description" content="Revolutionize your construction business with AI-powered cost estimation. Get accurate bids faster and win more projects.">
+  <style>
+    body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #030303;
+            color: #F1EFEC;
+        }
+
+    /* Floating navbar */
+    .navbar {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 40px);
+      max-width: 960px;
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(20px);
+      border-radius: 40px;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      border-color: whitesmoke;
+      font-size: 150%;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      margin-left: 20px;
+      font-size: 14px;
+    }
+
+    .navbar .cta {
+      background-color: #6951FF;
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 14px;
+      box-shadow: rgba(255, 255, 255, 0.2) 0px 1px inset, rgba(0, 0, 0, 0.16) 0px 2px 8px;
+    }
+
+    .section {
+      padding: 140px 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+/* Hero section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 63px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Waitlist form */
+        .waitlist-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        input[type="email"] {
+            flex: 1;
+            padding: 15px 20px;
+            border-radius: 8px;
+            border: none;
+            font-size: 16px;
+        }
+        
+        .btn {
+            background-color: #6951FF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        /* Features section */
+        .features {
+            padding: 100px 20px;
+            background-color: white;
+            color: black;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            font-size: 56px;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-card {
+            background-color: #f8f8f8;
+            border-radius: 12px;
+            padding: 30px;
+        }
+        
+        .feature-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        
+        .feature-card p {
+            color: #555;
+            line-height: 1.5;
+        }
+        
+        /* Demo section */
+        .demo {
+            padding: 100px 20px;
+            text-align: center;
+            background-color: white;
+            color: black;
+        }
+        
+        .demo h2 {
+            font-size: 56px;
+            margin-bottom: 40px;
+        }
+        
+        .demo-video {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 60px 20px;
+            background-color: #151726;
+            text-align: center;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .features h2, .demo h2 {
+                font-size: 42px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+            }
+        }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+        #image-container {
+            position: relative;
+            margin-top: 20px;
+            width: 100%; /* Take full available width */
+            max-width: 2100px; /* Match your image's native width */
+        }
+        #main-image {
+            border: 1px solid #ccc;
+            width: 100%; /* Make image fill its container */
+            height: auto; /* Maintain aspect ratio */
+            display: block; /* Remove inline spacing */
+        }
+        .bbox {
+            position: absolute;
+            border: 2px solid;
+            box-sizing: border-box;
+            transition: opacity 0.3s;
+        }
+        .bbox.hidden {
+            opacity: 0;
+        }
+        #controls {
+            margin: 15px 0;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .category-toggle {
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .category-toggle.active {
+            background: #e0e0e0;
+            font-weight: bold;
+        }
+        .count-badge {
+            background: #555;
+            color: white;
+            border-radius: 10px;
+            padding: 2px 8px;
+            font-size: 12px;
+        }
+        
+        /* Pricing Panel Styles */
+        #pricing-panel {
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            background: #f9f9f9;
+        }
+        .pricing-header {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .category-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .category-icon {
+            width: 30px;
+            height: 30px;
+            background: #eee;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+        .price-input, .count-input {
+            width: 60px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .multiply-sign {
+            font-size: 18px;
+            color: #777;
+        }
+        .total {
+            font-weight: bold;
+            margin-left: auto;
+            min-width: 60px;
+            text-align: right;
+        }
+        .grand-total {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+            font-weight: bold;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="logo">BidWize</div>
+    <div class="nav-links">
+      <!-- <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a> -->
+      <button class="cta btn">Join the Waitlist</button>
+    </div>
+  </div>
+
+  <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI-Powered Construction Estimation</h1>
+            <p>Get accurate project bids in minutes, not hours. Our AI analyzes your project details and delivers precise cost estimates to help you win more business.</p>
+            
+            <div class="waitlist-form">
+                  <form class="input-group" action="https://formspree.io/f/xrbkayak" method="POST">
+                    <input type="email" name="email" placeholder="Enter your email" required>
+                    <button class="btn" type="submit">Join Waitlist</button>
+                  </form>
+                <button class="btn btn-secondary">View Demo</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <!-- <section class="features">
+        <div class="features-container">
+            <h2>Why BidWize?</h2>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>90% Faster Estimates</h3>
+                    <p>Generate complete project estimates in minutes instead of hours, giving you more time to focus on winning projects.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>AI-Powered Accuracy</h3>
+                    <p>Our system learns from thousands of projects to provide the most accurate material and labor cost predictions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Competitive Edge</h3>
+                    <p>Outbid competitors with precise estimates that protect your margins while remaining competitive.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Customizable Templates</h3>
+                    <p>Create and save templates for different project types to streamline your estimating process.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Real-Time Updates</h3>
+                    <p>Get automatic adjustments when material prices or labor rates change in your area.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3>Seamless Integration</h3>
+                    <p>Connect with your existing project management and accounting software.</p>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    
+    <!-- Demo Section -->
+    <section class="demo">
+        <h2>See It In Action</h2>
+    <div id="controls">
+        <!-- Category toggles will be added here -->
+    </div>
+    
+    <div class="container">
+        <div>
+            <div id="image-container">
+                <img id="main-image" src="./demo_image.png" alt="Demo Image">
+                <!-- Bounding boxes will be added here -->
+            </div>
+        </div>
+        
+        <div id="pricing-panel">
+            <div class="pricing-header">Pricing Calculator</div>
+            <!-- Category rows will be added here -->
+            <div class="grand-total">
+                <span>Total:</span>
+                <span id="grand-total">$0.00</span>
+            </div>
+        </div>
+    </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <!-- <section class="hero" style="min-height: 60vh;">
+        <div class="hero-content">
+            <h2>Ready to Transform Your Estimating Process?</h2>
+            <p>Join our waitlist to be among the first to access BidWize when we launch.</p>
+            
+            <div class="waitlist-form">
+                <div class="input-group">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button class="btn">Join Waitlist</button>
+                </div>
+            </div>
+        </div>
+    </section> -->
+    
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 BidWize. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Simple form handling
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent === 'Join Waitlist') {
+                    const email = this.closest('.waitlist-form').querySelector('input').value;
+                    if (email && validateEmail(email)) {
+                        alert('Thanks for joining our waitlist! We\'ll be in touch soon.');
+                    } else {
+                        alert('Please enter a valid email address.');
+                    }
+                } else if (this.textContent === 'View Demo') {
+                    // Scroll to demo section
+                    document.querySelector('.demo').scrollIntoView({ behavior: 'smooth' });
+                } else if (this.textContent === 'Join the Waitlist') {
+                    // Scroll to demo section
+                    document.querySelector('.hero').scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // Fake annotations with % coordinates (relative to image size)
+        const annotations = {
+            "Single Pole Switch": [
+                {
+                    "bbox_x": 1244,
+                    "bbox_y": 77,
+                    "bbox_width": 18,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 395,
+                    "bbox_y": 1005,
+                    "bbox_width": 12,
+                    "bbox_height": 18,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 769,
+                    "bbox_y": 869,
+                    "bbox_width": 18,
+                    "bbox_height": 14,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 733,
+                    "bbox_y": 647,
+                    "bbox_width": 7,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 740,
+                    "bbox_y": 645,
+                    "bbox_width": 8,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 748,
+                    "bbox_y": 649,
+                    "bbox_width": 9,
+                    "bbox_height": 16,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 558,
+                    "bbox_y": 534,
+                    "bbox_width": 22,
+                    "bbox_height": 13,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 411,
+                    "bbox_y": 539,
+                    "bbox_width": 20,
+                    "bbox_height": 14,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 186,
+                    "bbox_y": 839,
+                    "bbox_width": 18,
+                    "bbox_height": 10,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 186,
+                    "bbox_y": 846,
+                    "bbox_width": 18,
+                    "bbox_height": 12,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 578,
+                    "bbox_y": 773,
+                    "bbox_width": 11,
+                    "bbox_height": 27,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 556,
+                    "bbox_y": 772,
+                    "bbox_width": 13,
+                    "bbox_height": 25,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 294,
+                    "bbox_y": 738,
+                    "bbox_width": 15,
+                    "bbox_height": 25,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Three Way Switch": [
+                {
+                    "bbox_x": 487,
+                    "bbox_y": 549,
+                    "bbox_width": 13,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 543,
+                    "bbox_y": 773,
+                    "bbox_width": 13,
+                    "bbox_height": 24,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 1245,
+                    "bbox_y": 102,
+                    "bbox_width": 17,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Dimmer Switch": [
+                {
+                    "bbox_x": 565,
+                    "bbox_y": 773,
+                    "bbox_width": 12,
+                    "bbox_height": 24,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 1246,
+                    "bbox_y": 157,
+                    "bbox_width": 16,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 558,
+                    "bbox_y": 547,
+                    "bbox_width": 24,
+                    "bbox_height": 14,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 411,
+                    "bbox_y": 555,
+                    "bbox_width": 21,
+                    "bbox_height": 13,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 276,
+                    "bbox_y": 738,
+                    "bbox_width": 17,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Duplex Receptacle Outlet": [
+                {
+                    "bbox_x": 1245,
+                    "bbox_y": 179,
+                    "bbox_width": 19,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 205,
+                    "bbox_y": 400,
+                    "bbox_width": 14,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 394,
+                    "bbox_y": 400,
+                    "bbox_width": 14,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 581,
+                    "bbox_y": 400,
+                    "bbox_width": 14,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 753,
+                    "bbox_y": 400,
+                    "bbox_width": 18,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 184,
+                    "bbox_y": 544,
+                    "bbox_width": 20,
+                    "bbox_height": 16,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 319,
+                    "bbox_y": 616,
+                    "bbox_width": 14,
+                    "bbox_height": 18,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 503,
+                    "bbox_y": 547,
+                    "bbox_width": 16,
+                    "bbox_height": 24,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 609,
+                    "bbox_y": 615,
+                    "bbox_width": 13,
+                    "bbox_height": 20,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 757,
+                    "bbox_y": 615,
+                    "bbox_width": 13,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 743,
+                    "bbox_y": 775,
+                    "bbox_width": 17,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 311,
+                    "bbox_y": 1004,
+                    "bbox_width": 15,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 648,
+                    "bbox_y": 1005,
+                    "bbox_width": 16,
+                    "bbox_height": 20,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 772,
+                    "bbox_y": 966,
+                    "bbox_width": 19,
+                    "bbox_height": 16,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 420,
+                    "bbox_y": 774,
+                    "bbox_width": 16,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 588,
+                    "bbox_y": 774,
+                    "bbox_width": 14,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 183,
+                    "bbox_y": 773,
+                    "bbox_width": 20,
+                    "bbox_height": 18,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "GFCI": [
+                {
+                    "bbox_x": 1246,
+                    "bbox_y": 233,
+                    "bbox_width": 18,
+                    "bbox_height": 27,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 496,
+                    "bbox_y": 353,
+                    "bbox_width": 41,
+                    "bbox_height": 34,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 759,
+                    "bbox_y": 643,
+                    "bbox_width": 26,
+                    "bbox_height": 37,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 803,
+                    "bbox_y": 911,
+                    "bbox_width": 35,
+                    "bbox_height": 32,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 356,
+                    "bbox_y": 1038,
+                    "bbox_width": 39,
+                    "bbox_height": 37,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 184,
+                    "bbox_y": 1008,
+                    "bbox_width": 37,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 185,
+                    "bbox_y": 814,
+                    "bbox_width": 35,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 186,
+                    "bbox_y": 907,
+                    "bbox_width": 33,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 186,
+                    "bbox_y": 937,
+                    "bbox_width": 39,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 186,
+                    "bbox_y": 980,
+                    "bbox_width": 42,
+                    "bbox_height": 24,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 390,
+                    "bbox_y": 658,
+                    "bbox_width": 33,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 183,
+                    "bbox_y": 862,
+                    "bbox_width": 40,
+                    "bbox_height": 29,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "240V Outlet": [
+                {
+                    "bbox_x": 392,
+                    "bbox_y": 725,
+                    "bbox_width": 33,
+                    "bbox_height": 26,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 186,
+                    "bbox_y": 958,
+                    "bbox_width": 40,
+                    "bbox_height": 22,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Light Receptacle": [
+                {
+                    "bbox_x": 1244,
+                    "bbox_y": 709,
+                    "bbox_width": 23,
+                    "bbox_height": 20,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 570,
+                    "bbox_y": 834,
+                    "bbox_width": 19,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 713,
+                    "bbox_y": 834,
+                    "bbox_width": 15,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 713,
+                    "bbox_y": 974,
+                    "bbox_width": 16,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 569,
+                    "bbox_y": 973,
+                    "bbox_width": 22,
+                    "bbox_height": 15,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 354,
+                    "bbox_y": 930,
+                    "bbox_width": 18,
+                    "bbox_height": 20,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 263,
+                    "bbox_y": 932,
+                    "bbox_width": 16,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 240,
+                    "bbox_y": 882,
+                    "bbox_width": 15,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 262,
+                    "bbox_y": 789,
+                    "bbox_width": 17,
+                    "bbox_height": 20,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 354,
+                    "bbox_y": 793,
+                    "bbox_width": 21,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 323,
+                    "bbox_y": 675,
+                    "bbox_width": 20,
+                    "bbox_height": 21,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 222,
+                    "bbox_y": 676,
+                    "bbox_width": 19,
+                    "bbox_height": 19,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 504,
+                    "bbox_y": 702,
+                    "bbox_width": 20,
+                    "bbox_height": 17,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 616,
+                    "bbox_y": 692,
+                    "bbox_width": 17,
+                    "bbox_height": 20,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Ceiling Fan": [
+                {
+                    "bbox_x": 1203,
+                    "bbox_y": 961,
+                    "bbox_width": 106,
+                    "bbox_height": 113,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 614,
+                    "bbox_y": 456,
+                    "bbox_width": 123,
+                    "bbox_height": 117,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 245,
+                    "bbox_y": 461,
+                    "bbox_width": 120,
+                    "bbox_height": 113,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Exhaust Fan": [
+                {
+                    "bbox_x": 1239,
+                    "bbox_y": 504,
+                    "bbox_width": 36,
+                    "bbox_height": 35,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 680,
+                    "bbox_y": 685,
+                    "bbox_width": 29,
+                    "bbox_height": 31,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ],
+            "Smoke Detector": [
+                {
+                    "bbox_x": 1242,
+                    "bbox_y": 358,
+                    "bbox_width": 27,
+                    "bbox_height": 24,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 579,
+                    "bbox_y": 572,
+                    "bbox_width": 26,
+                    "bbox_height": 29,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 389,
+                    "bbox_y": 574,
+                    "bbox_width": 29,
+                    "bbox_height": 26,
+                    "image_width": 1850,
+                    "image_height": 1114
+                },
+                {
+                    "bbox_x": 500,
+                    "bbox_y": 733,
+                    "bbox_width": 27,
+                    "bbox_height": 28,
+                    "image_width": 1850,
+                    "image_height": 1114
+                }
+            ]
+        };
+
+        // Vibrant colors for visibility
+        const categoryColors = {
+            "Single Pole Switch": "#E51616",
+            "Three Way Switch": "#E59216",
+            "Dimmer Switch": "#BCE516",
+            "Duplex Receptacle Outlet": "#40E516",
+            "GFCI": "#16E569",
+            "240V Outlet": "#16E5E5",
+            "Light Receptacle": "#1669E5",
+            "Ceiling Fan": "#4016E5",
+            "Exhaust Fan": "#BC16E5",
+            "Smoke Detector": "#E51692"
+        };
+
+        // Category icons (using emoji for demo - replace with actual icons)
+        const categoryIcons = {
+            "Single Pole Switch": "./Single Pole Switch.png",
+            "Three Way Switch": "./Three Way Switch.png",
+            "Dimmer Switch": "./Dimmer Switch.png",
+            "Duplex Receptacle Outlet": "./Duplex Receptacle Outlet.png",
+            "GFCI": "./GFCI.png",
+            "240V Outlet": "./240V Outlet.png",
+            "Light Receptacle": "./Light Receptacle.png",
+            "Ceiling Fan": "./Ceiling Fan.png",
+            "Exhaust Fan": "./Exhaust Fan.png",
+            "Smoke Detector": "./Smoke Detector.png"
+        };
+
+        // Track active categories
+        const activeCategories = new Set(Object.keys(annotations));
+        const pricingData = {};
+
+        // Initialize everything
+        function init() {
+            renderBoundingBoxes();
+            createCategoryToggles();
+            createPricingPanel();
+        }
+
+        function renderBoundingBoxes() {
+            const container = document.getElementById('image-container');
+            container.querySelectorAll('.bbox').forEach(el => el.remove());
+
+            const img = document.getElementById('main-image');
+            
+            // Wait for image to load to get accurate dimensions
+            img.onload = function() {
+                const imgWidth = img.naturalWidth; // Use actual image dimensions
+                const imgHeight = img.naturalHeight;
+                
+                Object.entries(annotations).forEach(([category, boxes]) => {
+                    boxes.forEach((box, index) => {
+                        const boxElement = document.createElement('div');
+                        boxElement.className = 'bbox';
+                        boxElement.dataset.category = category;
+                        boxElement.dataset.index = index;
+                        boxElement.style.borderColor = categoryColors[category];
+                        
+                        // Calculate percentages based on actual image dimensions
+                        boxElement.style.left = `${(box.bbox_x / box.image_width * 100)}%`;
+                        boxElement.style.top = `${(box.bbox_y / box.image_height * 100)}%`;
+                        boxElement.style.width = `${(box.bbox_width / box.image_width * 100)}%`;
+                        boxElement.style.height = `${(box.bbox_height / box.image_height * 100)}%`;
+                        
+                        if (!activeCategories.has(category)) {
+                            boxElement.classList.add('hidden');
+                        }
+                        
+                        container.appendChild(boxElement);
+                    });
+                });
+            };
+            
+            // Trigger load if image is already cached
+            if (img.complete) img.onload();
+        }
+
+        function createCategoryToggles() {
+            const controls = document.getElementById('controls');
+            controls.innerHTML = ''; // Clear existing
+            
+            Object.keys(annotations).forEach(category => {
+                const toggle = document.createElement('button');
+                toggle.className = 'category-toggle active';
+                toggle.innerHTML = `
+                    ${category}
+                    <span class="count-badge">${annotations[category].length}</span>
+                `;
+                toggle.style.borderColor = categoryColors[category];
+                
+                toggle.onclick = () => {
+                    toggle.classList.toggle('active');
+                    if (activeCategories.has(category)) {
+                        activeCategories.delete(category);
+                    } else {
+                        activeCategories.add(category);
+                    }
+                    
+                    // Update all boxes in this category
+                    document.querySelectorAll(`.bbox[data-category="${category}"]`).forEach(box => {
+                        box.classList.toggle('hidden');
+                    });
+                };
+                
+                controls.appendChild(toggle);
+            });
+
+            // Add "Toggle All" button
+            const toggleAll = document.createElement('button');
+            toggleAll.className = 'category-toggle active';
+            toggleAll.textContent = 'Toggle All';
+            toggleAll.onclick = () => {
+                const allActive = activeCategories.size === Object.keys(annotations).length;
+                
+                if (allActive) {
+                    // Hide all
+                    activeCategories.clear();
+                    document.querySelectorAll('.category-toggle').forEach(t => t.classList.remove('active'));
+                } else {
+                    // Show all
+                    Object.keys(annotations).forEach(cat => activeCategories.add(cat));
+                    document.querySelectorAll('.category-toggle').forEach(t => t.classList.add('active'));
+                }
+                
+                document.querySelectorAll('.bbox').forEach(box => {
+                    box.classList.toggle('hidden', !allActive);
+                });
+            };
+            controls.appendChild(toggleAll);
+        }
+
+        function createPricingPanel() {
+            const panel = document.getElementById('pricing-panel');
+            const grandTotal = panel.querySelector('.grand-total');
+            
+            // Initialize pricing data
+            Object.keys(annotations).forEach(category => {
+                pricingData[category] = {
+                    price: 0,
+                    count: annotations[category].length,
+                    total: 0
+                };
+            });
+            
+            // Create rows for each category
+            Object.keys(annotations).forEach(category => {
+                const row = document.createElement('div');
+                row.className = 'category-row';
+                row.innerHTML = `
+                    <img class="category-icon" src="${categoryIcons[category]}"></img>
+                    <input type="number" class="price-input" placeholder="$0.00" min="0" step="0.01" 
+                           data-category="${category}" data-type="price">
+                    <div class="multiply-sign">×</div>
+                    <input type="number" class="count-input" value="${annotations[category].length}" min="0" 
+                           data-category="${category}" data-type="count">
+                    <div class="total" data-category="${category}">$0.00</div>
+                `;
+                panel.insertBefore(row, grandTotal);
+            });
+            
+            // Add event listeners for inputs
+            panel.querySelectorAll('input').forEach(input => {
+                input.addEventListener('input', updateCalculations);
+            });
+            
+            updateCalculations();
+        }
+
+        function updateCalculations() {
+            // Update individual category totals
+            let grandTotal = 0;
+            
+            Object.keys(annotations).forEach(category => {
+                const price = parseFloat(document.querySelector(`.price-input[data-category="${category}"]`).value) || 0;
+                const count = parseInt(document.querySelector(`.count-input[data-category="${category}"]`).value) || 0;
+                const total = price * count;
+                
+                pricingData[category] = { price, count, total };
+                document.querySelector(`.total[data-category="${category}"]`).textContent = `$${total.toFixed(2)}`;
+                
+                grandTotal += total;
+            });
+            
+            // Update grand total
+            document.getElementById('grand-total').textContent = `$${grandTotal.toFixed(2)}`;
+        }
+
+        // Initialize when the page loads
+        window.onload = init;
+    </script>
+
+</body>
+</html>
